@@ -24,7 +24,7 @@ header("Location: auth.php");
 
 <head>
 
-	<title>Sphinx blog</title>
+	<title><?php bloginfo( 'name' ); ?></title>
 
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 
@@ -47,28 +47,6 @@ header("Location: auth.php");
 	<div id="header-hr">
 
 	<a href="#" id="mail-link">contact-us@mail.ru</a>
-<?php wp_nav_menu( array(
-	'theme_location'  => '',
-	'menu'            => '',
-	'container'       => 'ul',
-	'container_class' => '',
-	'container_id'    => 'submenu',
-	'menu_class'      => '',
-	'menu_id'         => 'submenu',
-	'echo'            => true,
-	'fallback_cb'     => 'wp_page_menu',
-	'before'          => '',
-	'after'           => '',
-	'link_before'     => '',
-	'link_after'      => '',
-	'items_wrap'      => '<ul id = "%1$s" class = "%2$s">%3$s</ul>',
-	'depth'           => 0,
-	'walker'          => '',
-) ); ?>
-	<ul id="submenu">
-
-				<li><img width="40px" height="40px" src="<?php bloginfo('template_directory') ?>/images/menu-b.png" id="submenu-img"></li>	
-	</ul>
 
 	<form action="<?php bloginfo('template_directory') ?>/reg.php" method="post" name = "acc" id="acc">
 		<input class="sub" type="submit" name="reg" value="<?php  if(@$_SESSION["auth"] != true) { echo "Регистрация"; }else {echo @$_SESSION["name"];}  ?>">
