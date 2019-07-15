@@ -59,7 +59,7 @@ body, nav, ul {
 	margin-left: 80px;
 }
 
-.current_page_item {
+#current_page_item {
 	color: #FFEA2D;
 }
 

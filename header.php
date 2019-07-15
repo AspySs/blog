@@ -42,7 +42,7 @@ header("Location: auth.php");
 <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> background="<?php echo 'http:'.fw_get_db_settings_option('logo-image')['url'] ?>">
 <?php wp_body_open(); ?>
 	<div id="header-hr">
 
@@ -56,30 +56,18 @@ header("Location: auth.php");
 	</form>
 
 
-
+<div id="logo"><?php bloginfo( 'name' ); ?></div>
 	</div>
 
-	<div id="top-menu">
-
-		<div id="logo"><?php bloginfo( 'name' ); ?></div>
-<?php wp_nav_menu( array(
-	'theme_location'  => '',
-	'menu'            => '',
-	'container'       => 'ul',
-	'container_class' => '',
-	'container_id'    => '',
-	'menu_class'      => '',
-	'menu_id'         => '',
-	'echo'            => true,
-	'fallback_cb'     => 'wp_page_menu',
-	'before'          => '',
-	'after'           => '',
-	'link_before'     => '',
-	'link_after'      => '',
-	'items_wrap'      => '<ul id = "%1$s" class = "%2$s">%3$s</ul>',
-	'depth'           => 0,
-	'walker'          => '',
+		<?php wp_nav_menu( array(
+	'theme_location'  => 'primary',
+	'container'       => 'div',
+	'container_id'    => 'top-menu',
+	'menu_id'         => 'top-menu',
 ) ); ?> 
+
+	<!-- <div id="top-menu"> -->
+
 <!-- 			<ul>
 
 	<li><a href="#">ГЛАВНАЯ</a></li>
@@ -96,6 +84,12 @@ header("Location: auth.php");
 
 </ul> -->
 
-	</div>
+	<!-- </div> -->
 
-	<div id="blog">БЛОГ</div>
+	<div id="blog"><?php
+		if ( is_single() ) :
+			the_title( '<h1 class="entry-title">', '</h1>' );
+			else :
+				the_title( sprintf( '', esc_url( get_permalink() ) ), '' );
+			endif;
+			?></div>

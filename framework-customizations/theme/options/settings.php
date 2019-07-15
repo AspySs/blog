@@ -4,7 +4,7 @@ if(!defined('FW')) die('Silence is golden.');
 $options = array(			
 	'logo-image' => array(
 		'type' => 'upload',
-		'label' => ('Logo', 'blog')
+		'label' => 'Logo',
 		'images_only' => true
 			
 	)
